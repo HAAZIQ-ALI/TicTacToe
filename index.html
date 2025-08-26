@@ -4,10 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          screens: {
+            'xs': '475px',
+          }
+        }
+      }
+    }
+  </script>
   <style>
   body{
     padding: 0;
     margin: 0;
+  }
+  
+  /* Ensure game board is always square and properly sized */
+  .game-grid {
+    aspect-ratio: 1;
+    max-width: min(90vw, 90vh);
+  }
+  
+  /* Better touch targets on mobile */
+  @media (max-width: 640px) {
+    .box {
+      min-height: 4rem;
+      touch-action: manipulation;
+    }
   }
     </style>
 
@@ -15,27 +40,30 @@
 
 </head>
 <body class="h-screen w-full bg-[url('/gradient.svg')] bg-cover bg-center ">
-    <nav class="bg-[#2E3A4A]/40 backdrop-blur-md w-full p-4 flex justify-between" ><h1 class="font-bold text-3xl text-slate-200"  >Tic Tac Toe </h1> <a href="https://github.com/HAAZIQ-ALI/TicTacToe"> <img src="./github.svg" alt="github" class="w-10 h-10" /></a>
-</nav>
+    <nav class="bg-[#2E3A4A]/40 backdrop-blur-md w-full p-4 flex justify-between items-center" >
+        <h1 class="font-bold text-2xl sm:text-3xl text-slate-200">Tic Tac Toe</h1> 
+        <a href="https://github.com/HAAZIQ-ALI/TicTacToe" class="hover:scale-110 transition-transform"> 
+            <img src="./github.svg" alt="github" class="w-8 h-8 sm:w-10 sm:h-10" />
+        </a>
+    </nav>
     <div class="bg-slate-100 w-full h-[1px]"></div>
-    <main class="flex justify-center items-center mt-10">
-        <section class="grid grid-cols-3  bg-[#223843] h-72 w-72 sm:w-80 sm:h-80 md:h-96 md:w-96 text-slate-300">
+    <main class="flex justify-center items-center mt-6 sm:mt-10 px-4">
+        <section class="game-grid grid grid-cols-3 gap-1 sm:gap-2 bg-[#223843] p-2 sm:p-3 rounded-lg w-64 h-64 xs:w-72 xs:h-72 sm:w-80 sm:h-80 md:h-96 md:w-96 text-slate-300">
         
-            <button  class=" box flex items-center justify-center rounded-md text-3xl font-bold bg-transparent hover:bg-slate-400/30 " >-</button>
-            <button  class=" box flex items-center justify-center rounded-md text-3xl font-bold bg-transparent hover:bg-slate-400/30 " >-</button>
-            <button  class=" box flex items-center justify-center rounded-md text-3xl font-bold bg-transparent hover:bg-slate-400/30 " >-</button>
-            <button  class=" box flex items-center justify-center rounded-md text-3xl font-bold bg-transparent hover:bg-slate-400/30 " >-</button>
-            <button  class=" box flex items-center justify-center rounded-md text-3xl font-bold bg-transparent hover:bg-slate-400/30 " >-</button>
-            <button  class=" box flex items-center justify-center rounded-md text-3xl font-bold bg-transparent hover:bg-slate-400/30 " >-</button>
-            <button  class=" box flex items-center justify-center rounded-md text-3xl font-bold bg-transparent hover:bg-slate-400/30 " >-</button>
-            <button  class=" box flex items-center justify-center rounded-md text-3xl font-bold bg-transparent hover:bg-slate-400/30 " >-</button>
-            <button  class=" box flex items-center justify-center rounded-md text-3xl font-bold bg-transparent hover:bg-slate-400/30 " >-</button>
+            <button class="box flex items-center justify-center rounded-md text-2xl sm:text-3xl font-bold bg-transparent hover:bg-slate-400/30 transition-colors duration-200 min-h-[4rem] sm:min-h-[5rem]">-</button>
+            <button class="box flex items-center justify-center rounded-md text-2xl sm:text-3xl font-bold bg-transparent hover:bg-slate-400/30 transition-colors duration-200 min-h-[4rem] sm:min-h-[5rem]">-</button>
+            <button class="box flex items-center justify-center rounded-md text-2xl sm:text-3xl font-bold bg-transparent hover:bg-slate-400/30 transition-colors duration-200 min-h-[4rem] sm:min-h-[5rem]">-</button>
+            <button class="box flex items-center justify-center rounded-md text-2xl sm:text-3xl font-bold bg-transparent hover:bg-slate-400/30 transition-colors duration-200 min-h-[4rem] sm:min-h-[5rem]">-</button>
+            <button class="box flex items-center justify-center rounded-md text-2xl sm:text-3xl font-bold bg-transparent hover:bg-slate-400/30 transition-colors duration-200 min-h-[4rem] sm:min-h-[5rem]">-</button>
+            <button class="box flex items-center justify-center rounded-md text-2xl sm:text-3xl font-bold bg-transparent hover:bg-slate-400/30 transition-colors duration-200 min-h-[4rem] sm:min-h-[5rem]">-</button>
+            <button class="box flex items-center justify-center rounded-md text-2xl sm:text-3xl font-bold bg-transparent hover:bg-slate-400/30 transition-colors duration-200 min-h-[4rem] sm:min-h-[5rem]">-</button>
+            <button class="box flex items-center justify-center rounded-md text-2xl sm:text-3xl font-bold bg-transparent hover:bg-slate-400/30 transition-colors duration-200 min-h-[4rem] sm:min-h-[5rem]">-</button>
+            <button class="box flex items-center justify-center rounded-md text-2xl sm:text-3xl font-bold bg-transparent hover:bg-slate-400/30 transition-colors duration-200 min-h-[4rem] sm:min-h-[5rem]">-</button>
         </section>
-
     </main>
-    <div class="flex justify-center items-center mt-4 p-4 text-slate-300">
-          <button class="flex items-center justify-center rounded-md text-3xl font-bold bg-[#224554]/70 p-4 hover:bg-[#456882] reset-button h-34 w-32">Reset</button>
-          <div id="scoreBoard" class="flex items-center justify-center rounded-md text-lg bg-[#224554]/70 ml-4 h-34 w-64 p-4">
+    <div class="flex flex-col sm:flex-row justify-center items-center mt-4 p-4 text-slate-300 gap-4">
+          <button class="flex items-center justify-center rounded-md text-xl sm:text-2xl md:text-3xl font-bold bg-[#224554]/70 p-3 sm:p-4 hover:bg-[#456882] reset-button transition-colors duration-200 w-28 h-12 sm:w-32 sm:h-14">Reset</button>
+          <div id="scoreBoard" class="flex items-center justify-center rounded-md text-sm sm:text-base md:text-lg bg-[#224554]/70 p-3 sm:p-4 w-full max-w-xs sm:max-w-sm">
             <span>Draws: 0  X: 0  O: 0</span>
           </div>
     </div>
